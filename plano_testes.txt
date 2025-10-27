@@ -1,0 +1,383 @@
+PLANO DE TESTES FUNCIONAIS - SISTEMA DE RESERVAS DE PASSAGENS AÉREAS
+=======================================================================
+
+Este documento apresenta os casos de teste para validar o funcionamento correto 
+do sistema de reservas da companhia FlyMeToTheMoon.
+
+=======================================================================
+1. TESTES DE INICIALIZAÇÃO DO SISTEMA
+=======================================================================
+
+TESTE 1.1: Inicialização do Sistema
+Objetivo: Verificar se o sistema inicializa corretamente com voos pré-cadastrados
+Passos:
+1. Executar o programa
+2. Verificar mensagem de inicialização
+Resultado Esperado: 
+- Sistema exibe "Sistema inicializado com sucesso!"
+- Sistema exibe "Total de voos cadastrados: 5"
+- Menu principal é apresentado
+
+TESTE 1.2: Voos Pré-cadastrados
+Objetivo: Verificar se os voos iniciais estão corretos
+Passos:
+1. Executar opção "2. Consultar Voos Disponíveis"
+2. Verificar lista de voos
+Resultado Esperado:
+- 5 voos listados: AA001, BB002, CC003, DD004, EE005
+- Cada voo com origem, destino e assentos por classe
+- Assentos disponíveis conforme especificação inicial
+
+=======================================================================
+2. TESTES DE NAVEGAÇÃO E MENU
+=======================================================================
+
+TESTE 2.1: Exibição do Menu Principal
+Objetivo: Verificar se o menu principal é exibido corretamente
+Passos:
+1. Executar o programa
+2. Observar o menu principal
+Resultado Esperado:
+- Menu com 6 opções (0-5)
+- Formatação clara e organizada
+- Título "SISTEMA DE RESERVAS - FlyMeToTheMoon"
+
+TESTE 2.2: Opção Inválida no Menu
+Objetivo: Testar comportamento com entrada inválida
+Passos:
+1. No menu principal, digitar "9"
+2. Observar resposta do sistema
+Resultado Esperado:
+- Mensagem "Opção inválida! Tente novamente."
+- Menu é exibido novamente
+
+TESTE 2.3: Entrada Não Numérica no Menu
+Objetivo: Testar tratamento de erro com texto
+Passos:
+1. No menu principal, digitar "abc"
+2. Observar resposta do sistema
+Resultado Esperado:
+- Mensagem "Por favor, digite apenas números!"
+- Menu é exibido novamente
+
+TESTE 2.4: Sair do Sistema
+Objetivo: Verificar saída correta do programa
+Passos:
+1. No menu principal, digitar "0"
+2. Observar resposta do sistema
+Resultado Esperado:
+- Mensagem "Obrigado por usar o sistema FlyMeToTheMoon!"
+- Mensagem "Até logo!"
+- Programa encerra
+
+=======================================================================
+3. TESTES DE CONSULTA DE VOOS
+=======================================================================
+
+TESTE 3.1: Consultar Voos com Dados
+Objetivo: Verificar listagem de voos disponíveis
+Passos:
+1. Selecionar opção "2. Consultar Voos Disponíveis"
+2. Verificar informações exibidas
+Resultado Esperado:
+- Lista todos os 5 voos cadastrados
+- Para cada voo: código, rota, assentos por classe, total disponível
+- Formatação clara e organizada
+
+=======================================================================
+4. TESTES DE RESERVA DE PASSAGENS
+=======================================================================
+
+TESTE 4.1: Reserva Válida - Classe Econômica
+Objetivo: Realizar reserva com dados válidos
+Passos:
+1. Selecionar opção "1. Fazer Reserva"
+2. Escolher voo "AA001"
+3. Escolher classe "1" (Econômica)
+4. Inserir nome "João Silva"
+5. Inserir CPF "12345678901"
+Resultado Esperado:
+- Mensagem "RESERVA REALIZADA COM SUCESSO!"
+- Número da reserva #1
+- Dados da reserva exibidos corretamente
+- Assento decrementado no voo
+
+TESTE 4.2: Reserva com Voo Inexistente
+Objetivo: Testar comportamento com código de voo inválido
+Passos:
+1. Selecionar opção "1. Fazer Reserva"
+2. Digitar código "XX999"
+Resultado Esperado:
+- Mensagem "Voo não encontrado!"
+- Retorna ao menu principal
+
+TESTE 4.3: Reserva com Classe Inválida
+Objetivo: Testar validação de tipo de classe
+Passos:
+1. Selecionar opção "1. Fazer Reserva"
+2. Escolher voo válido "AA001"
+3. Digitar classe "5"
+Resultado Esperado:
+- Mensagem "Tipo de classe inválido!"
+- Retorna ao menu principal
+
+TESTE 4.4: Reserva com Nome Inválido
+Objetivo: Testar validação de nome do passageiro
+Passos:
+1. Fazer reserva até o passo de inserir nome
+2. Digitar nome "A" (muito curto)
+Resultado Esperado:
+- Mensagem "Nome deve ter pelo menos 2 caracteres!"
+- Retorna ao menu principal
+
+TESTE 4.5: Reserva com CPF Inválido
+Objetivo: Testar validação de CPF
+Passos:
+1. Fazer reserva até o passo de inserir CPF
+2. Digitar CPF "123" (muito curto)
+Resultado Esperado:
+- Mensagem "CPF deve conter exatamente 11 dígitos!"
+- Retorna ao menu principal
+
+TESTE 4.6: Reserva com CPF Não Numérico
+Objetivo: Testar validação de CPF com letras
+Passos:
+1. Fazer reserva até o passo de inserir CPF
+2. Digitar CPF "1234567890a"
+Resultado Esperado:
+- Mensagem "CPF deve conter exatamente 11 dígitos!"
+- Retorna ao menu principal
+
+TESTE 4.7: Prevenção de Overbooking
+Objetivo: Verificar se o sistema impede overbooking
+Passos:
+1. Fazer 150 reservas na classe econômica do voo AA001
+2. Tentar fazer a 151ª reserva
+Resultado Esperado:
+- Mensagem "Não há assentos disponíveis na classe Econômica!"
+- Reserva não é criada
+
+TESTE 4.8: Múltiplas Reservas Válidas
+Objetivo: Testar criação de várias reservas
+Passos:
+1. Fazer 3 reservas diferentes com dados válidos
+2. Verificar numeração sequencial
+Resultado Esperado:
+- Reservas #1, #2, #3 criadas
+- Cada reserva com dados corretos
+- Assentos decrementados corretamente
+
+=======================================================================
+5. TESTES DE LISTAGEM DE RESERVAS
+=======================================================================
+
+TESTE 5.1: Listar Reservas com Dados
+Objetivo: Verificar listagem de reservas existentes
+Passos:
+1. Criar 2 reservas
+2. Selecionar opção "3. Listar Todas as Reservas"
+Resultado Esperado:
+- Lista as 2 reservas criadas
+- Para cada reserva: número, passageiro, CPF, voo, classe, rota
+- Total de reservas exibido
+
+TESTE 5.2: Listar Reservas Vazio
+Objetivo: Testar listagem sem reservas
+Passos:
+1. Executar programa sem fazer reservas
+2. Selecionar opção "3. Listar Todas as Reservas"
+Resultado Esperado:
+- Mensagem "Nenhuma reserva encontrada no sistema."
+
+=======================================================================
+6. TESTES DE GERAÇÃO DE BILHETE
+=======================================================================
+
+TESTE 6.1: Gerar Bilhete Válido
+Objetivo: Gerar bilhete para reserva existente
+Passos:
+1. Criar uma reserva
+2. Selecionar opção "4. Gerar Bilhete de Embarque"
+3. Digitar número da reserva criada
+Resultado Esperado:
+- Bilhete formatado exibido
+- Todos os dados corretos: reserva, passageiro, CPF, voo, origem, destino, classe
+- Cabeçalho "FlyMeToTheMoon Airlines"
+
+TESTE 6.2: Gerar Bilhete - Reserva Inexistente
+Objetivo: Testar geração com número inválido
+Passos:
+1. Selecionar opção "4. Gerar Bilhete de Embarque"
+2. Digitar número "999"
+Resultado Esperado:
+- Mensagem "Reserva não encontrada!"
+- Retorna ao menu principal
+
+TESTE 6.3: Gerar Bilhete - Entrada Inválida
+Objetivo: Testar entrada não numérica
+Passos:
+1. Selecionar opção "4. Gerar Bilhete de Embarque"
+2. Digitar "abc"
+Resultado Esperado:
+- Mensagem "Por favor, digite apenas números!"
+- Retorna ao menu principal
+
+TESTE 6.4: Gerar Bilhete - Sistema Vazio
+Objetivo: Testar geração sem reservas
+Passos:
+1. Executar programa sem fazer reservas
+2. Selecionar opção "4. Gerar Bilhete de Embarque"
+Resultado Esperado:
+- Mensagem "Nenhuma reserva encontrada no sistema."
+- Retorna ao menu principal
+
+=======================================================================
+7. TESTES DE CANCELAMENTO DE RESERVA
+=======================================================================
+
+TESTE 7.1: Cancelar Reserva Válida
+Objetivo: Cancelar reserva existente
+Passos:
+1. Criar uma reserva
+2. Selecionar opção "5. Cancelar Reserva"
+3. Digitar número da reserva
+4. Confirmar com "s"
+Resultado Esperado:
+- Lista de reservas existentes exibida
+- Mensagem "RESERVA CANCELADA COM SUCESSO!"
+- Assento liberado no voo
+- Reserva removida da lista
+
+TESTE 7.2: Cancelar Reserva - Não Confirmar
+Objetivo: Testar cancelamento não confirmado
+Passos:
+1. Criar uma reserva
+2. Tentar cancelar
+3. Digitar "n" na confirmação
+Resultado Esperado:
+- Mensagem "Cancelamento abortado."
+- Reserva mantida no sistema
+
+TESTE 7.3: Cancelar Reserva Inexistente
+Objetivo: Testar cancelamento com número inválido
+Passos:
+1. Selecionar opção "5. Cancelar Reserva"
+2. Digitar número "999"
+Resultado Esperado:
+- Mensagem "Reserva não encontrada!"
+- Retorna ao menu principal
+
+TESTE 7.4: Cancelar - Sistema Vazio
+Objetivo: Testar cancelamento sem reservas
+Passos:
+1. Executar programa sem fazer reservas
+2. Selecionar opção "5. Cancelar Reserva"
+Resultado Esperado:
+- Mensagem "Nenhuma reserva encontrada no sistema."
+- Retorna ao menu principal
+
+=======================================================================
+8. TESTES DE INTEGRIDADE DO SISTEMA
+=======================================================================
+
+TESTE 8.1: Verificar Integridade após Cancelamento
+Objetivo: Verificar se assentos são liberados corretamente
+Passos:
+1. Anotar assentos disponíveis do voo AA001
+2. Fazer uma reserva
+3. Verificar decremento
+4. Cancelar a reserva
+5. Verificar incremento
+Resultado Esperado:
+- Assentos decrementam após reserva
+- Assentos incrementam após cancelamento
+- Valores retornam ao estado inicial
+
+TESTE 8.2: Teste de Múltiplas Operações
+Objetivo: Testar sequência complexa de operações
+Passos:
+1. Fazer 3 reservas diferentes
+2. Cancelar a 2ª reserva
+3. Fazer mais 2 reservas
+4. Listar todas as reservas
+5. Gerar bilhetes para reservas ativas
+Resultado Esperado:
+- Todas as operações executam corretamente
+- Numeração de reservas mantém sequência
+- Assentos atualizados corretamente
+
+TESTE 8.3: Teste de Limites do Sistema
+Objetivo: Testar comportamento próximo aos limites
+Passos:
+1. Esgotar assentos de uma classe específica
+2. Tentar fazer nova reserva na mesma classe
+3. Fazer reserva em classe diferente
+Resultado Esperado:
+- Sistema impede reserva em classe esgotada
+- Sistema permite reserva em classe disponível
+- Mensagens de erro apropriadas
+
+=======================================================================
+9. TESTES DE USABILIDADE
+=======================================================================
+
+TESTE 9.1: Formatação e Apresentação
+Objetivo: Verificar qualidade da interface textual
+Critérios:
+- Menus bem formatados e legíveis
+- Mensagens claras e informativas
+- Separadores visuais adequados
+- Informações organizadas logicamente
+
+TESTE 9.2: Fluxo de Navegação
+Objetivo: Verificar facilidade de uso
+Critérios:
+- Retorno ao menu principal após cada operação
+- Opções numeradas claramente
+- Confirmações para operações críticas
+- Tratamento adequado de erros
+
+=======================================================================
+10. RESUMO DE VALIDAÇÃO DOS REQUISITOS
+=======================================================================
+
+✓ REQUISITO: Registrar reservas de passagens aéreas
+  VALIDADO POR: Testes 4.1, 4.8
+
+✓ REQUISITO: Venda de diferentes tipos de passagens
+  VALIDADO POR: Testes 4.1 (econômica), reservas em executiva e primeira classe
+
+✓ REQUISITO: Verificar disponibilidade de assentos
+  VALIDADO POR: Testes 3.1, 4.7
+
+✓ REQUISITO: Evitar overbooking
+  VALIDADO POR: Teste 4.7
+
+✓ REQUISITO: Manter registro organizado de reservas
+  VALIDADO POR: Testes 5.1, 5.2
+
+✓ REQUISITO: Gerar bilhetes de embarque
+  VALIDADO POR: Testes 6.1, 6.2, 6.3, 6.4
+
+✓ REQUISITO: Estruturas condicionais
+  VALIDADO POR: Todos os testes (validações, menu, decisões)
+
+✓ REQUISITO: Estruturas de repetição
+  VALIDADO POR: Menu principal (while), listagens (for)
+
+✓ REQUISITO: Operadores lógicos
+  VALIDADO POR: Validações (and, or, not), comparações
+
+✓ REQUISITO: Entrada e saída de dados
+  VALIDADO POR: Todos os testes (input/print)
+
+=======================================================================
+OBSERVAÇÕES PARA EXECUÇÃO DOS TESTES:
+=======================================================================
+
+1. Execute cada teste individualmente para verificar o comportamento específico
+2. Reinicie o programa entre testes quando necessário para garantir estado limpo
+3. Anote os resultados obtidos e compare com os resultados esperados
+4. Documente qualquer comportamento inesperado para correção
+5. Teste casos extremos e situações de erro para garantir robustez
+6. Verifique se todas as mensagens estão em português e bem formatadas

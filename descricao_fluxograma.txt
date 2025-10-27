@@ -1,0 +1,157 @@
+DESCRIÇÃO PARA FLUXOGRAMA - SISTEMA DE RESERVAS DE PASSAGENS AÉREAS
+===========================================================================
+
+Esta descrição serve como base para criação de um fluxograma visual do sistema.
+
+1. INÍCIO DO PROGRAMA
+   ↓
+   [Processo] Inicializar sistema com voos pré-cadastrados
+   ↓
+
+2. MENU PRINCIPAL
+   [Processo] Exibir menu com opções:
+   - 1. Fazer Reserva
+   - 2. Consultar Voos Disponíveis  
+   - 3. Listar Todas as Reservas
+   - 4. Gerar Bilhete de Embarque
+   - 5. Cancelar Reserva
+   - 0. Sair
+   ↓
+   [Entrada] Ler opção do usuário
+   ↓
+   [Decisão] Verificar opção escolhida
+   ├─ Se opção = 0 → [Fim] Encerrar programa
+   ├─ Se opção = 1 → Ir para FLUXO FAZER RESERVA
+   ├─ Se opção = 2 → Ir para FLUXO CONSULTAR VOOS
+   ├─ Se opção = 3 → Ir para FLUXO LISTAR RESERVAS
+   ├─ Se opção = 4 → Ir para FLUXO GERAR BILHETE
+   ├─ Se opção = 5 → Ir para FLUXO CANCELAR RESERVA
+   └─ Se opção inválida → [Saída] Exibir "Opção inválida" → Voltar ao MENU PRINCIPAL
+
+3. FLUXO FAZER RESERVA
+   [Processo] Exibir voos disponíveis
+   ↓
+   [Entrada] Ler código do voo desejado
+   ↓
+   [Decisão] Voo existe?
+   ├─ Não → [Saída] "Voo não encontrado" → Voltar ao MENU PRINCIPAL
+   └─ Sim ↓
+   [Processo] Exibir tipos de classe (1-Econômica, 2-Executiva, 3-Primeira)
+   ↓
+   [Entrada] Ler tipo de classe
+   ↓
+   [Decisão] Tipo de classe válido (1-3)?
+   ├─ Não → [Saída] "Tipo inválido" → Voltar ao MENU PRINCIPAL
+   └─ Sim ↓
+   [Decisão] Há assentos disponíveis na classe escolhida?
+   ├─ Não → [Saída] "Sem assentos disponíveis" → Voltar ao MENU PRINCIPAL
+   └─ Sim ↓
+   [Entrada] Ler nome do passageiro
+   ↓
+   [Entrada] Ler CPF do passageiro
+   ↓
+   [Processo] Criar nova reserva
+   ↓
+   [Processo] Adicionar reserva à lista
+   ↓
+   [Processo] Decrementar contador de assentos do voo
+   ↓
+   [Saída] Exibir "Reserva realizada com sucesso" + número da reserva
+   ↓
+   Voltar ao MENU PRINCIPAL
+
+4. FLUXO CONSULTAR VOOS
+   [Decisão] Lista de voos está vazia?
+   ├─ Sim → [Saída] "Nenhum voo cadastrado"
+   └─ Não ↓
+   [Processo] Para cada voo na lista:
+   ├─ [Saída] Exibir código do voo
+   ├─ [Saída] Exibir origem e destino
+   ├─ [Saída] Exibir assentos disponíveis por classe
+   └─ [Saída] Exibir separador
+   ↓
+   Voltar ao MENU PRINCIPAL
+
+5. FLUXO LISTAR RESERVAS
+   [Decisão] Lista de reservas está vazia?
+   ├─ Sim → [Saída] "Nenhuma reserva encontrada"
+   └─ Não ↓
+   [Processo] Para cada reserva na lista:
+   ├─ [Saída] Exibir número da reserva
+   ├─ [Saída] Exibir nome do passageiro
+   ├─ [Saída] Exibir CPF
+   ├─ [Saída] Exibir código do voo
+   ├─ [Saída] Exibir classe da passagem
+   └─ [Saída] Exibir separador
+   ↓
+   Voltar ao MENU PRINCIPAL
+
+6. FLUXO GERAR BILHETE
+   [Entrada] Ler número da reserva
+   ↓
+   [Decisão] Reserva existe?
+   ├─ Não → [Saída] "Reserva não encontrada" → Voltar ao MENU PRINCIPAL
+   └─ Sim ↓
+   [Processo] Buscar dados do voo da reserva
+   ↓
+   [Saída] Exibir bilhete formatado com:
+   ├─ Nome da companhia
+   ├─ Número da reserva
+   ├─ Nome do passageiro
+   ├─ CPF
+   ├─ Código do voo
+   ├─ Origem e destino
+   └─ Classe da passagem
+   ↓
+   Voltar ao MENU PRINCIPAL
+
+7. FLUXO CANCELAR RESERVA
+   [Entrada] Ler número da reserva
+   ↓
+   [Decisão] Reserva existe?
+   ├─ Não → [Saída] "Reserva não encontrada" → Voltar ao MENU PRINCIPAL
+   └─ Sim ↓
+   [Processo] Buscar voo da reserva
+   ↓
+   [Processo] Incrementar contador de assentos do voo (liberar assento)
+   ↓
+   [Processo] Remover reserva da lista
+   ↓
+   [Saída] "Reserva cancelada com sucesso"
+   ↓
+   Voltar ao MENU PRINCIPAL
+
+8. ESTRUTURAS DE REPETIÇÃO UTILIZADAS:
+   - Loop principal do menu (REPETIR...ATÉ)
+   - Loop para exibir voos (PARA CADA)
+   - Loop para exibir reservas (PARA CADA)
+   - Loop para buscar voo por código (PARA CADA)
+   - Loop para buscar reserva por número (PARA CADA)
+
+9. ESTRUTURAS CONDICIONAIS UTILIZADAS:
+   - Verificação de opção do menu (SE...SENÃO SE...SENÃO)
+   - Validação de existência de voo (SE...SENÃO)
+   - Validação de tipo de classe (SE...SENÃO)
+   - Verificação de disponibilidade de assentos (SE...SENÃO)
+   - Verificação de listas vazias (SE...SENÃO)
+   - Validação de existência de reserva (SE...SENÃO)
+
+10. OPERADORES LÓGICOS UTILIZADOS:
+    - E (AND): verificação de tipo de classe E disponibilidade
+    - OU (OR): validação de limites de tipo de classe
+    - Comparações: =, <, >, <=, >=
+    - Negação: verificação de listas vazias
+
+11. ENTRADA E SAÍDA DE DADOS:
+    - Entrada: opções do menu, dados de voo, dados do passageiro, números de reserva
+    - Saída: menus, listas de voos, listas de reservas, bilhetes, mensagens de erro/sucesso
+
+OBSERVAÇÕES PARA O FLUXOGRAMA:
+- Use símbolos ovais para INÍCIO e FIM
+- Use retângulos para PROCESSOS
+- Use losangos para DECISÕES
+- Use paralelogramos para ENTRADA/SAÍDA
+- Use setas para indicar o fluxo
+- Agrupe fluxos relacionados em cores diferentes
+- Destaque os loops com setas de retorno
+- Marque claramente os pontos de retorno ao menu principal

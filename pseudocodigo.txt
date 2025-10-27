@@ -1,0 +1,226 @@
+PSEUDOCÓDIGO - SISTEMA DE GERENCIAMENTO DE RESERVAS DE PASSAGENS AÉREAS
+===============================================================================
+
+INÍCIO PROGRAMA SistemaReservasAereas
+
+    // Estruturas de dados principais
+    DECLARAR lista_voos = []
+    DECLARAR lista_reservas = []
+    DECLARAR contador_reserva = 1
+
+    // Inicialização do sistema com voos pré-cadastrados
+    FUNÇÃO inicializar_sistema():
+        ADICIONAR voo("AA001", "São Paulo", "Rio de Janeiro", 150, 100, 200) à lista_voos
+        ADICIONAR voo("BB002", "Rio de Janeiro", "Brasília", 120, 80, 150) à lista_voos
+        ADICIONAR voo("CC003", "Brasília", "Salvador", 100, 60, 120) à lista_voos
+    FIM FUNÇÃO
+
+    // Menu principal do sistema
+    FUNÇÃO menu_principal():
+        REPETIR
+            EXIBIR "=== SISTEMA DE RESERVAS - FlyMeToTheMoon ==="
+            EXIBIR "1. Fazer Reserva"
+            EXIBIR "2. Consultar Voos Disponíveis"
+            EXIBIR "3. Listar Todas as Reservas"
+            EXIBIR "4. Gerar Bilhete de Embarque"
+            EXIBIR "5. Cancelar Reserva"
+            EXIBIR "0. Sair"
+            
+            LER opcao
+            
+            SE opcao = 1 ENTÃO
+                fazer_reserva()
+            SENÃO SE opcao = 2 ENTÃO
+                consultar_voos()
+            SENÃO SE opcao = 3 ENTÃO
+                listar_reservas()
+            SENÃO SE opcao = 4 ENTÃO
+                gerar_bilhete()
+            SENÃO SE opcao = 5 ENTÃO
+                cancelar_reserva()
+            SENÃO SE opcao = 0 ENTÃO
+                EXIBIR "Obrigado por usar o sistema FlyMeToTheMoon!"
+                SAIR
+            SENÃO
+                EXIBIR "Opção inválida! Tente novamente."
+            FIM SE
+        ATÉ opcao = 0
+    FIM FUNÇÃO
+
+    // Função para fazer uma nova reserva
+    FUNÇÃO fazer_reserva():
+        EXIBIR "=== FAZER RESERVA ==="
+        
+        // Mostrar voos disponíveis
+        consultar_voos()
+        
+        LER codigo_voo
+        voo_encontrado = buscar_voo(codigo_voo)
+        
+        SE voo_encontrado = NULO ENTÃO
+            EXIBIR "Voo não encontrado!"
+            RETORNAR
+        FIM SE
+        
+        EXIBIR "Tipos de classe disponíveis:"
+        EXIBIR "1. Econômica"
+        EXIBIR "2. Executiva" 
+        EXIBIR "3. Primeira Classe"
+        LER tipo_classe
+        
+        // Validar tipo de classe
+        SE tipo_classe < 1 OU tipo_classe > 3 ENTÃO
+            EXIBIR "Tipo de classe inválido!"
+            RETORNAR
+        FIM SE
+        
+        // Verificar disponibilidade
+        SE verificar_disponibilidade(voo_encontrado, tipo_classe) = FALSO ENTÃO
+            EXIBIR "Não há assentos disponíveis para esta classe!"
+            RETORNAR
+        FIM SE
+        
+        // Coletar dados do passageiro
+        EXIBIR "Digite o nome do passageiro:"
+        LER nome_passageiro
+        EXIBIR "Digite o CPF do passageiro:"
+        LER cpf_passageiro
+        
+        // Criar reserva
+        nova_reserva = criar_reserva(contador_reserva, nome_passageiro, cpf_passageiro, 
+                                   codigo_voo, tipo_classe)
+        ADICIONAR nova_reserva à lista_reservas
+        
+        // Atualizar disponibilidade do voo
+        atualizar_assentos(voo_encontrado, tipo_classe)
+        
+        contador_reserva = contador_reserva + 1
+        
+        EXIBIR "Reserva realizada com sucesso!"
+        EXIBIR "Número da reserva: " + nova_reserva.numero
+    FIM FUNÇÃO
+
+    // Função para verificar disponibilidade de assentos
+    FUNÇÃO verificar_disponibilidade(voo, tipo_classe):
+        SE tipo_classe = 1 E voo.assentos_economica > 0 ENTÃO
+            RETORNAR VERDADEIRO
+        SENÃO SE tipo_classe = 2 E voo.assentos_executiva > 0 ENTÃO
+            RETORNAR VERDADEIRO
+        SENÃO SE tipo_classe = 3 E voo.assentos_primeira > 0 ENTÃO
+            RETORNAR VERDADEIRO
+        SENÃO
+            RETORNAR FALSO
+        FIM SE
+    FIM FUNÇÃO
+
+    // Função para consultar voos disponíveis
+    FUNÇÃO consultar_voos():
+        EXIBIR "=== VOOS DISPONÍVEIS ==="
+        PARA CADA voo EM lista_voos FAÇA
+            EXIBIR "Código: " + voo.codigo
+            EXIBIR "Origem: " + voo.origem + " → Destino: " + voo.destino
+            EXIBIR "Assentos Econômica: " + voo.assentos_economica
+            EXIBIR "Assentos Executiva: " + voo.assentos_executiva
+            EXIBIR "Assentos Primeira Classe: " + voo.assentos_primeira
+            EXIBIR "------------------------"
+        FIM PARA
+    FIM FUNÇÃO
+
+    // Função para listar todas as reservas
+    FUNÇÃO listar_reservas():
+        EXIBIR "=== TODAS AS RESERVAS ==="
+        SE lista_reservas ESTÁ VAZIA ENTÃO
+            EXIBIR "Nenhuma reserva encontrada."
+        SENÃO
+            PARA CADA reserva EM lista_reservas FAÇA
+                EXIBIR "Reserva #" + reserva.numero
+                EXIBIR "Passageiro: " + reserva.nome
+                EXIBIR "CPF: " + reserva.cpf
+                EXIBIR "Voo: " + reserva.codigo_voo
+                EXIBIR "Classe: " + obter_nome_classe(reserva.tipo_classe)
+                EXIBIR "------------------------"
+            FIM PARA
+        FIM SE
+    FIM FUNÇÃO
+
+    // Função para gerar bilhete de embarque
+    FUNÇÃO gerar_bilhete():
+        EXIBIR "=== GERAR BILHETE DE EMBARQUE ==="
+        EXIBIR "Digite o número da reserva:"
+        LER numero_reserva
+        
+        reserva_encontrada = buscar_reserva(numero_reserva)
+        
+        SE reserva_encontrada = NULO ENTÃO
+            EXIBIR "Reserva não encontrada!"
+            RETORNAR
+        FIM SE
+        
+        voo_reserva = buscar_voo(reserva_encontrada.codigo_voo)
+        
+        EXIBIR "========== BILHETE DE EMBARQUE =========="
+        EXIBIR "FlyMeToTheMoon Airlines"
+        EXIBIR "Reserva: #" + reserva_encontrada.numero
+        EXIBIR "Passageiro: " + reserva_encontrada.nome
+        EXIBIR "CPF: " + reserva_encontrada.cpf
+        EXIBIR "Voo: " + reserva_encontrada.codigo_voo
+        EXIBIR "Origem: " + voo_reserva.origem
+        EXIBIR "Destino: " + voo_reserva.destino
+        EXIBIR "Classe: " + obter_nome_classe(reserva_encontrada.tipo_classe)
+        EXIBIR "========================================"
+    FIM FUNÇÃO
+
+    // Função para cancelar reserva
+    FUNÇÃO cancelar_reserva():
+        EXIBIR "=== CANCELAR RESERVA ==="
+        EXIBIR "Digite o número da reserva:"
+        LER numero_reserva
+        
+        reserva_encontrada = buscar_reserva(numero_reserva)
+        
+        SE reserva_encontrada = NULO ENTÃO
+            EXIBIR "Reserva não encontrada!"
+            RETORNAR
+        FIM SE
+        
+        // Liberar assento no voo
+        voo_reserva = buscar_voo(reserva_encontrada.codigo_voo)
+        liberar_assento(voo_reserva, reserva_encontrada.tipo_classe)
+        
+        // Remover reserva da lista
+        REMOVER reserva_encontrada DE lista_reservas
+        
+        EXIBIR "Reserva cancelada com sucesso!"
+    FIM FUNÇÃO
+
+    // Funções auxiliares
+    FUNÇÃO buscar_voo(codigo):
+        PARA CADA voo EM lista_voos FAÇA
+            SE voo.codigo = codigo ENTÃO
+                RETORNAR voo
+            FIM SE
+        FIM PARA
+        RETORNAR NULO
+    FIM FUNÇÃO
+
+    FUNÇÃO buscar_reserva(numero):
+        PARA CADA reserva EM lista_reservas FAÇA
+            SE reserva.numero = numero ENTÃO
+                RETORNAR reserva
+            FIM SE
+        FIM PARA
+        RETORNAR NULO
+    FIM FUNÇÃO
+
+    FUNÇÃO obter_nome_classe(tipo):
+        SE tipo = 1 ENTÃO RETORNAR "Econômica"
+        SENÃO SE tipo = 2 ENTÃO RETORNAR "Executiva"
+        SENÃO SE tipo = 3 ENTÃO RETORNAR "Primeira Classe"
+        FIM SE
+    FIM FUNÇÃO
+
+    // Programa principal
+    inicializar_sistema()
+    menu_principal()
+
+FIM PROGRAMA
