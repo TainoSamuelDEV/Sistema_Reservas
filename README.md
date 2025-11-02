@@ -24,9 +24,6 @@ Este é um sistema desenvolvido em Python para o projeto acadêmico da disciplin
 ## Algoritmo desenvolvido
 [Algoritmo desenvolvido](sistema_reservas.py)
 
-## Comprovação dos testes
-[Comprovação dos testes](plano_testes.txt)
-
 ## Como executar
 1. Python 3 instalado
 2. No terminal, vá até a pasta do projeto
@@ -36,6 +33,9 @@ Este é um sistema desenvolvido em Python para o projeto acadêmico da disciplin
    ```
 OU
 4. Execute o arquivo `sistema_reservas.exe`
+
+## Comprovação dos testes
+[Comprovação dos testes](plano_testes.txt)
 
 ## Sugestão de Melhorias
 [Sugestão de Melhorias](melhorias-futuras.txt)
