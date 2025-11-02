@@ -20,6 +20,8 @@ Este é um sistema desenvolvido em Python para o projeto acadêmico da disciplin
    ```bash
    python sistema_reservas.py
    ```
+OU
+4. Execute o arquivo `sistema_reservas.py`
 
 ## Funcionamento rápido
 - Os voos já vêm cadastrados com poucos assentos
