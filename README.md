@@ -19,13 +19,13 @@ Este é um sistema desenvolvido em Python para o projeto acadêmico da disciplin
 ![Fluxograma da solução](fluxograma.jpg)
 
 ## Pseudocódigo
-![Pseudocódigo da solução](pseudocodigo.txt)
+[Pseudocódigo da solução](pseudocodigo.txt)
 
 ## Algoritmo desenvolvido
-![Algoritmo desenvolvido](sistema_reservas.py)
+[Algoritmo desenvolvido](sistema_reservas.py)
 
 ## Comprovação dos testes
-![Comprovação dos testes](plano_testes.txt)
+[Comprovação dos testes](plano_testes.txt)
 
 ## O que tem
 - Consultar voos disponíveis
