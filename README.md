@@ -40,11 +40,6 @@ OU
 ## Sugestão de Melhorias
 [Sugestão de Melhorias](melhorias-futuras.txt)
 
-## O que tem
-- Consultar voos disponíveis
-- Fazer uma reserva
-- Listar reservas
-
 ## Obrigado
 - Agradecemos por utilizar nosso sistema de reservas.
 - Se você tiver alguma sugestão ou feedback, por favor, nos fale.
