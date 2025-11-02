@@ -1,7 +1,7 @@
 # Roteiro de Apresentação — Sistema de Reservas (Vídeo 10–12 min)
 
 - Tom: profissional e acessível, linguagem simples e objetiva.
-- Integrantes e papéis: Ana (Negócio), Bruno (Técnico/Código), Carla (Testes/Usuário).
+- Integrantes e papéis: Ana (Negócio), Bruno (Técnico/Código), Carla (Testes/Usuário), Diego (Arquitetura/Transições).
 - Materiais de apoio: `fluxograma.jpg`, `pseudocodigo.txt`, `plano_testes.txt`, `melhorias_futuras.txt`, código `sistema_reservas.py`.
 - Tempo total estimado: 11m45s.
 
@@ -9,13 +9,14 @@
 
 ## 1) Introdução (30–60s)
 
-- Tempo: ~45s
+- Tempo: ~55s
 - Visuais: Slide título “Sistema Simples de Reservas” + nomes dos integrantes + objetivos.
 
 Falas:
 - Ana (10s): "Olá! Somos Ana, Bruno e Carla. Vamos apresentar nosso Sistema Simples de Reservas de Voos, desenvolvido para a disciplina de Algoritmos e Programação."
 - Bruno (20s): "Mostraremos requisitos, fluxo da solução, pseudocódigo, implementação em Python e testes funcionais. O foco é clareza, simplicidade e fundamentos sólidos para evolução."
 - Carla (15s): "Ao final, trazemos melhorias planejadas e abrimos para perguntas. Vamos começar pelos requisitos do negócio."
+- Diego (12s): "Vou fazer as transições entre os tópicos, conectando requisitos, fluxo e código, e pontuando decisões de arquitetura que apoiam futuras melhorias."
 
 Transição: "Com o contexto em mente, seguimos para os requisitos."
 
@@ -111,7 +112,7 @@ Transição: "Agora, vamos abrir o código e relacionar com o que vimos."
 - Tempo: ~2m30s
 - Visuais: Exibir `sistema_reservas.py` com zoom nos trechos principais.
 
-Falas (Bruno):
+Falas (Bruno e Diego):
 - "O programa é procedural, com variáveis globais `voos`, `reservas` e `proximo_numero`."
 - "`inicializar_voos()`: cria três voos de exemplo com poucos assentos para facilitar testes."
 - "`mostrar_voos()`: imprime a lista e lida com lista vazia."
@@ -120,6 +121,8 @@ Falas (Bruno):
 - "`listar_reservas()`: impressão do número, nome, CPF e código do voo."
 - "`menu()`: loop de opções com tratamento de `ValueError` para entradas não numéricas."
 - "`main()`: inicializa voos e entra no menu — permite execução direta do arquivo."
+- Diego: "Decisões de arquitetura: separar I/O (inputs/prints) da lógica, preparar terreno para classes (`Voo`, `Reserva`, `SistemaReservas`), reduzir efeitos colaterais e isolar validações para futura reutilização."
+- Diego: "Refatorações futuras: mover dados para uma camada de persistência, trocar busca linear por estruturas mais eficientes (ex.: `dict` indexado por código), modularizar o menu e introduzir testes automatizados."
 
 Destaques técnicos:
 - Simplicidade e funções coesas; mensagens claras orientando o usuário.
@@ -187,11 +190,13 @@ Transição: "Com base nos testes, propomos evoluções."
 - Tempo: ~1m00s
 - Visuais: Exibir `melhorias_futuras.txt`; slide com roadmap.
 
-Falas (Ana):
+Falas (Ana e Diego):
 - Funcionalidades: persistência (arquivo/banco), cancelamento/alteração de reservas, filtros por origem/destino/data, autenticação básica.
 - Técnicas: validação formal de CPF, tratamento de erros robusto, logging e testes automatizados com `pytest`.
 - Arquitetura: classes (`Voo`, `Reserva`, `SistemaReservas`), separação UI x lógica, API para integração frontend.
 - Escalabilidade: estruturas de dados eficientes, persistência transacional para múltiplos usuários.
+- Diego: "Arquitetura e extensibilidade: camadas (domínio, aplicação, infraestrutura), padrões para serviços e repositórios, testes de unidade/integração e API REST para futuras integrações."
+- Diego: "Escalabilidade técnica: `dict` para voos por código, indexação por origem/destino, transações para concorrência e monitoramento (logging/metrics)."
 
 Transição: "Para fechar, um breve resumo."
 
@@ -237,6 +242,7 @@ Falas (Todos):
 - Ana: Seções 1 (apresentação), 2 (requisitos), 7 (melhorias), parte da 8.
 - Bruno: Seções 1 (objetivos), 3 (fluxo), 5 (código), parte da 8.
 - Carla: Seções 1 (encaminhamento), 4 (pseudocódigo), 6 (testes), parte da 8.
+- Diego: Seções 1 (transições), 5 (arquitetura do código), 7 (arquitetura/escala), parte da 8.
 
 ---
 
