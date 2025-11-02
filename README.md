@@ -1,17 +1,36 @@
 # Sistema de Reservas
 
-Este é um sistema desenvolvido em Python para o projeto acadêmico da disciplina de Algoritmos e Programação de Computadores. O sistema foi criado para a companhia aérea fictícia FlyMeToTheMoon e tem como objetivo substituir o sistema manual de reservas baseado em papel.
+Este é um sistema desenvolvido em Python para o projeto acadêmico da disciplina de Algoritmos e Programação de Computadores(AVQUALIS PBL2 ALG ARLLEY). O sistema foi criado para a companhia aérea fictícia FlyMeToTheMoon e tem como objetivo substituir o sistema manual de reservas baseado em papel.
+
+## Alunos
+- [Taino Samuel](https://github.com/tainoxs)
+- [Gabriel Ordonez](https://github.com/GahbX)
+- [Rafael Oliveira](https://github.com/rafaelodsDEV)
+- [Victor Eduard](https://github.com/vk-tor)
+
+
+## Requisitos do Negócio
+- Consulta de voos: visualização de voos disponíveis com origem, destino e assentos
+- Sistema de reservas: registro com validações de dados mínimos (nome e CPF)
+- Listagem completa: histórico de todas as reservas realizadas
+- Inicialização: voos pré-cadastrados em memória para testes rápidos
+
+## Fluxograma da solução
+![Fluxograma da solução](fluxograma.jpg)
+
+## Pseudocódigo
+![Pseudocódigo da solução](pseudocodigo.txt)
+
+## Algoritmo desenvolvido
+![Algoritmo desenvolvido](sistema_reservas.py)
+
+## Comprovação dos testes
+![Comprovação dos testes](plano_testes.txt)
 
 ## O que tem
 - Consultar voos disponíveis
 - Fazer uma reserva
 - Listar reservas
-
-## O que NÃO tem
-- Classes de serviço (econômica, executiva, etc.)
-- Bilhete de embarque
-- Cancelamento de reservas
-- Banco de dados (usa listas em memória)
 
 ## Como executar
 1. Python 3 instalado
