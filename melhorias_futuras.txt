@@ -13,7 +13,6 @@ Benefícios:
 - Backup e recuperação
 Implementação:
 - Tabelas: voos, reservas, passageiros
-- Operações CRUD e transações
 - Índices para otimizar consultas
 Tecnologias: SQLite (local), PostgreSQL (servidor), SQLAlchemy (ORM)
 
@@ -27,7 +26,6 @@ Benefícios:
 Funcionalidades:
 - Dashboard, formulários com validação, calendário de datas
 - Mapa de assentos, relatórios gráficos
-Tecnologias: Tkinter (simples), PyQt5/6 (profissional), Kivy (mobile), Electron+Python (web)
 
 ===========================================================
 3. AUTENTICAÇÃO E AUTORIZAÇÃO
@@ -37,7 +35,7 @@ Benefícios:
 - Segurança e auditoria
 - Controle por função (Operador/Supervisor/Administrador)
 Funcionalidades:
-- Login, logs de atividades, sessões com timeout
+- Login, logs de atividades
 - Recuperação de senha por e-mail
 
 ===========================================================
@@ -62,34 +60,10 @@ Benefícios:
 - Informações em tempo real e automação
 - Melhor experiência do cliente
 Principais integrações:
-- Pagamentos: PagSeguro/PayPal/Stripe, cartões, PIX, boleto, promoções
+- Pagamentos: PIX, boleto, promoções
 - Comunicação: SMS, e-mail, WhatsApp Business, notificações push
 - Aviação: clima, aeroportos, status de voos, preço de combustível
 - Governamentais: validação de CPF, passaportes, restrições de voo
-
-===========================================================
-6. APLICATIVO MOBILE
-===========================================================
-Descrição: App para reservas e gestão de viagens no celular.
-Benefícios:
-- Conveniência, check-in, notificações e acesso offline
-Funcionalidades:
-- Busca/reserva, check-in, cartão digital, notificações, fidelidade, chat
-Tecnologias: React Native, Flutter, Ionic, nativo (iOS/Android)
-
-===========================================================
-7. PREÇOS DINÂMICOS
-===========================================================
-Descrição: Algoritmo de precificação por demanda e sazonalidade.
-Benefícios:
-- Maximização de receita e ocupação
-- Competitividade e resposta rápida
-Fatores:
-- Ocupação, tempo até o voo, histórico da rota
-- Sazonalidade, concorrência, custos
-Funcionalidades:
-- ML para previsão, regras configuráveis, promoções automáticas
-- Análise de elasticidade e simulador
 
 ===========================================================
 8. MELHORIAS DE UX
@@ -100,17 +74,6 @@ Funcionalidades adicionais: busca por origem/destino, filtros, favoritos, sugest
 Acessibilidade: leitores de tela, teclado, contraste, fontes, múltiplos idiomas.
 
 ===========================================================
-9. BACKUP E RECUPERAÇÃO
-===========================================================
-Descrição: Backup automático e plano de continuidade.
-Componentes:
-- Rotina de backup (diário/semanal) e replicação
-- Versionamento e testes de recuperação
-Benefícios:
-- Proteção contra perda de dados e recuperação rápida
-- Conformidade e histórico de mudanças
-
-===========================================================
 10. CONFIGURAÇÃO E ADMINISTRAÇÃO
 ===========================================================
 Descrição: Painel para gestão sem editar código.
@@ -119,25 +82,6 @@ Funcionalidades:
 - Parâmetros: overbooking, cancelamento, taxas/tarifas
 Benefícios:
 - Flexibilidade, menos dependência técnica, auditoria
-
-===========================================================
-CRONOGRAMA RESUMIDO
-===========================================================
-Fase 1 (1–2 meses): BD, melhorias na interface atual, relatórios básicos.
-Fase 2 (2–3 meses): GUI inicial, autenticação, backup automático.
-Fase 3 (3–4 meses): Mobile básico, pagamentos, relatórios avançados.
-Fase 4 (4–6 meses): Preços dinâmicos, integrações externas, admin.
-Fase 5 (6+ meses): Analytics avançado, IA, performance.
-
-===========================================================
-CONSIDERAÇÕES TÉCNICAS
-===========================================================
-Arquitetura: MVC, API REST, microserviços (quando escalar), cache, balanceamento.
-Tecnologias: Backend (Python/Django/Flask ou Node.js), Frontend (React/Vue/Angular),
-Mobile (React Native/Flutter), Banco (PostgreSQL/MongoDB), Cache (Redis),
-Mensageria (RabbitMQ/Kafka).
-Segurança: HTTPS, criptografia de dados sensíveis, 2FA, logs de auditoria,
-testes de segurança regulares.
 
 ===========================================================
 CONCLUSÃO
