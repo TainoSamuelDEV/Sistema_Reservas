@@ -1,19 +1,12 @@
-"""
-Sistema de Reservas (Versão Simples)
-
-Esta é uma versão bem básica do sistema.
-Feita para ser fácil de entender e usar.
-"""
-
-# Dados em memória (bem simples)
+# dados em memória
 voos = []
 reservas = []
 proximo_numero = 1
 
 
 def inicializar_voos():
-    # Cada voo tem: codigo, origem, destino, assentos
-    # Números pequenos para testar fácil
+    # cada voo tem: codigo, origem, destino, assentos
+    # números pequenos para testar fácil
     voos.append({"codigo": "AA001", "origem": "São Paulo", "destino": "Rio de Janeiro", "assentos": 5})
     voos.append({"codigo": "BB002", "origem": "Rio de Janeiro", "destino": "Brasília", "assentos": 3})
     voos.append({"codigo": "CC003", "origem": "Brasília", "destino": "Salvador", "assentos": 2})
@@ -56,12 +49,12 @@ def fazer_reserva():
     nome = input("Nome do passageiro: ").strip()
     cpf = input("CPF (apenas números): ").strip()
 
-    # Validações bem básicas (parece iniciante)
+    # validações bem básicas (parece iniciante)
     if nome == "" or cpf == "":
         print("Nome e CPF não podem ficar vazios.")
         return
 
-    # Cria reserva simples
+    # cria reserva simples
     reserva = {
         "numero": proximo_numero,
         "nome": nome,

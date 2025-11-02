@@ -1,6 +1,6 @@
-# Versão Simples do Sistema de Reservas
+# Sistema de Reservas
 
-Este é um exemplo bem básico do sistema de reservas, pensado para ser fácil de entender. Não tem recursos avançados, apenas o essencial para funcionar.
+Este é um sistema desenvolvido em Python para o projeto acadêmico da disciplina de Algoritmos e Programação de Computadores. O sistema foi criado para a companhia aérea fictícia FlyMeToTheMoon e tem como objetivo substituir o sistema manual de reservas baseado em papel.
 
 ## O que tem
 - Consultar voos disponíveis
@@ -14,11 +14,11 @@ Este é um exemplo bem básico do sistema de reservas, pensado para ser fácil d
 - Banco de dados (usa listas em memória)
 
 ## Como executar
-1. Tenha Python 3 instalado
+1. Python 3 instalado
 2. No terminal, vá até a pasta do projeto
 3. Rode:
    ```bash
-   python sistema_reservas_simplificado.py
+   python sistema_reservas.py
    ```
 
 ## Funcionamento rápido
