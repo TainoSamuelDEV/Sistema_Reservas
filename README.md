@@ -27,11 +27,6 @@ Este é um sistema desenvolvido em Python para o projeto acadêmico da disciplin
 ## Comprovação dos testes
 [Comprovação dos testes](plano_testes.txt)
 
-## O que tem
-- Consultar voos disponíveis
-- Fazer uma reserva
-- Listar reservas
-
 ## Como executar
 1. Python 3 instalado
 2. No terminal, vá até a pasta do projeto
@@ -42,7 +37,14 @@ Este é um sistema desenvolvido em Python para o projeto acadêmico da disciplin
 OU
 4. Execute o arquivo `sistema_reservas.exe`
 
-## Funcionamento rápido
-- Os voos já vêm cadastrados com poucos assentos
-- Ao reservar, o sistema reduz o número de assentos daquele voo
-- As reservas ficam guardadas enquanto o programa está aberto
+## Sugestão de Melhorias
+[Sugestão de Melhorias](melhorias-futuras.txt)
+
+## O que tem
+- Consultar voos disponíveis
+- Fazer uma reserva
+- Listar reservas
+
+## Obrigado
+- Agradecemos por utilizar nosso sistema de reservas.
+- Se você tiver alguma sugestão ou feedback, por favor, nos fale.
