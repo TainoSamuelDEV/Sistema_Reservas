@@ -38,7 +38,7 @@ OU
 [Comprovação dos testes](plano_testes.txt)
 
 ## Sugestão de Melhorias
-[Sugestão de Melhorias](melhorias-futuras.txt)
+[Sugestão de Melhorias](melhorias_futuras.txt)
 
 ## Obrigado
 - Agradecemos por utilizar nosso sistema de reservas.
