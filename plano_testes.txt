@@ -1,0 +1,84 @@
+PLANO DE TESTES FUNCIONAIS — SISTEMA DE RESERVAS
+================================================
+Objetivo: Validar funcionalidades do sistema FlyMeToTheMoon de forma concisa.
+
+================================================
+1) INICIALIZAÇÃO
+================================================
+1.1 Inicialização: Executar programa; ver "Sistema inicializado...", "Total de voos: 5" e menu.
+1.2 Voos iniciais: Opção 2; listar AA001, BB002, CC003, DD004, EE005 com origem/destino e assentos por classe.
+
+================================================
+2) MENU E NAVEGAÇÃO
+================================================
+2.1 Menu principal: Iniciar; menu com opções 0–5 e título.
+2.2 Opção inválida: Digitar 9; mensagem e menu reaparece.
+2.3 Não numérico: Digitar "abc"; mensagem e menu reaparece.
+2.4 Sair: Digitar 0; mensagens de saída e encerramento.
+
+================================================
+3) CONSULTA DE VOOS
+================================================
+T3.1 Listagem: Opção 2; exibir 5 voos com código, rota, assentos por classe e total disponível.
+
+================================================
+4) RESERVA DE PASSAGENS
+================================================
+4.1 Reserva válida (econômica): Opção 1; voo AA001; classe 1; nome/CPF válidos; sucesso, #1 e assento decrementa.
+4.2 Voo inexistente: Código "XX999"; mensagem e retorno ao menu.
+4.3 Classe inválida: Classe "5"; mensagem e retorno ao menu.
+4.4 Nome inválido: Nome "A"; mensagem.
+4.5 CPF curto: "123"; mensagem.
+4.6 CPF não numérico: "1234567890a"; mensagem.
+4.7 Overbooking: 150 reservas na econômica do AA001; 151ª negada com mensagem; não cria reserva.
+4.8 Múltiplas reservas: Criar 3 válidas; numeração #1,#2,#3; assentos decrementam corretamente.
+
+================================================
+5) LISTAGEM DE RESERVAS
+================================================
+5.1 Com dados: Criar 2 reservas; opção 3; listar número, passageiro, CPF, voo, classe, rota; total exibido.
+5.2 Vazio: Sem reservas; opção 3; mensagem "Nenhuma reserva...".
+
+================================================
+6) BILHETE DE EMBARQUE
+================================================
+6.1 Válido: Criar reserva; opção 4; digitar número; bilhete com dados (reserva, passageiro, CPF, voo, origem, destino, classe) e cabeçalho.
+6.2 Reserva inexistente: Opção 4; número "999"; mensagem.
+6.3 Entrada inválida: Opção 4; digitar "abc"; mensagem.
+6.4 Sistema vazio: Sem reservas; opção 4; mensagem.
+
+================================================
+7) CANCELAMENTO
+================================================
+7.1 Válido: Criar reserva; opção 5; número; confirmar "s"; sucesso, assento liberado e reserva removida.
+7.2 Não confirmar: Confirmar "n"; mensagem de abortado; reserva mantida.
+7.3 Inexistente: Número "999"; mensagem.
+7.4 Sistema vazio: Sem reservas; opção 5; mensagem.
+
+================================================
+8) INTEGRIDADE
+================================================
+8.1 Pós-cancelamento: Medir assentos; reservar; checar decremento; cancelar; checar incremento; volta ao inicial.
+8.2 Múltiplas operações: 3 reservas; cancelar 2ª; +2 reservas; listar; gerar bilhetes; sequência/números/assentos corretos.
+8.3 Limites: Esgotar classe; nova reserva negada; outra classe permitida; mensagens adequadas.
+
+================================================
+9) USABILIDADE
+================================================
+9.1 Formatação: Menus legíveis, mensagens claras, separadores e organização lógica.
+9.2 Fluxo: Retorno ao menu, opções numeradas, confirmações e tratamento de erros.
+
+================================================
+10) VALIDAÇÃO DE REQUISITOS
+================================================
+Reservas: 4.1, 4.8 | Tipos de passagens: 4.1 (+ executiva/primeira) | Disponibilidade: 3.1, 4.7
+Overbooking: 4.7 | Registro organizado: 5.1, 5.2 | Bilhete: 6.1–6.4
+Condicionais: todos | Repetição: menu (while), listagens (for) | Lógicos: comparações/validações
+Entrada/saída: todos (input/print)
+
+================================================
+OBSERVAÇÕES DE EXECUÇÃO
+================================================
+• Execute cada teste isoladamente quando necessário; reinicie para estado limpo.
+• Compare resultados obtidos vs. esperados e documente desvios.
+• Cubra extremos e erros para robustez; mensagens em português e bem formatadas.

@@ -1,0 +1,104 @@
+Pseudocódigo simples do sistema de reservas (espelha sistema_reservas.py)
+
+INÍCIO
+  Definir estruturas de dados:
+    voos = lista vazia
+    reservas = lista vazia
+    proximo_numero = 1
+
+  Função inicializar_voos():
+    adicionar {codigo: "AA001", origem: "São Paulo", destino: "Rio de Janeiro", assentos: 5} em voos
+    adicionar {codigo: "BB002", origem: "Rio de Janeiro", destino: "Brasília", assentos: 3} em voos
+    adicionar {codigo: "CC003", origem: "Brasília", destino: "Salvador", assentos: 2} em voos
+
+  Função mostrar_voos():
+    imprimir "=== VOOS DISPONÍVEIS ==="
+    SE tamanho(voos) == 0:
+      imprimir "Nenhum voo cadastrado."
+      RETORNAR
+    PARA cada v em voos:
+      imprimir "Voo", v.codigo, v.origem, "->", v.destino, "| Assentos:", v.assentos
+
+  Função buscar_voo_por_codigo(codigo):
+    PARA cada v em voos:
+      SE v.codigo == codigo:
+        RETORNAR v
+    RETORNAR NULO
+
+  Função fazer_reserva():
+    usar variável global proximo_numero
+    SE tamanho(voos) == 0:
+      imprimir "Não há voos disponíveis."
+      RETORNAR
+
+    mostrar_voos()
+    codigo = ler entrada "Digite o código do voo:" e converter para maiúsculas
+    voo = buscar_voo_por_codigo(codigo)
+
+    SE voo == NULO:
+      imprimir "Voo não encontrado."
+      RETORNAR
+
+    SE voo.assentos <= 0:
+      imprimir "Sem assentos disponíveis."
+      RETORNAR
+
+    nome = ler entrada "Nome do passageiro:"
+    cpf = ler entrada "CPF (apenas números):"
+
+    SE nome == "" OU cpf == "":
+      imprimir "Nome e CPF não podem ficar vazios."
+      RETORNAR
+
+    reserva = {numero: proximo_numero, nome: nome, cpf: cpf, codigo_voo: codigo}
+    adicionar reserva em reservas
+    proximo_numero = proximo_numero + 1
+    voo.assentos = voo.assentos - 1
+
+    imprimir "Reserva feita com sucesso!"
+    imprimir detalhes da reserva
+
+  Função listar_reservas():
+    imprimir "=== RESERVAS ==="
+    SE tamanho(reservas) == 0:
+      imprimir "Nenhuma reserva registrada."
+      RETORNAR
+    PARA cada r em reservas:
+      imprimir "Reserva #", r.numero, r.nome, "CPF:", r.cpf, "Voo:", r.codigo_voo
+
+  Função menu():
+    ENQUANTO VERDADEIRO:
+      imprimir cabeçalho e opções:
+        1 - Consultar voos
+        2 - Fazer reserva
+        3 - Listar reservas
+        0 - Sair
+
+      TENTAR:
+        op = ler entrada numérica "Escolha:"
+      CAPTURAR ValueError:
+        imprimir "Digite um número válido."
+        CONTINUAR
+
+      SE op == 1:
+        mostrar_voos()
+      SENÃO SE op == 2:
+        fazer_reserva()
+      SENÃO SE op == 3:
+        listar_reservas()
+      SENÃO SE op == 0:
+        imprimir "Saindo... Obrigado!"
+        QUEBRAR (sair do laço)
+      SENÃO:
+        imprimir "Opção inválida."
+
+  Função main():
+    imprimir "Iniciando sistema simples..."
+    inicializar_voos()
+    menu()
+
+  Estrutura de execução:
+    SE __name__ == "__main__":
+      main()
+
+FIM
