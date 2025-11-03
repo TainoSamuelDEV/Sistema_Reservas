@@ -1,6 +1,6 @@
 PLANO DE TESTES FUNCIONAIS — SISTEMA DE RESERVAS
 ================================================
-Objetivo: Validar funcionalidades do sistema FlyMeToTheMoon de forma concisa.
+Objetivo: Validar funcionalidades do sistema FlyMeToTheMoon
 
 ================================================
 1) INICIALIZAÇÃO

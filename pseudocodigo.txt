@@ -1,4 +1,4 @@
-Pseudocódigo simples do sistema de reservas (espelha sistema_reservas.py)
+Pseudocódigo do sistema de reservas (espelha sistema_reservas.py)
 
 INÍCIO
   Definir estruturas de dados:
