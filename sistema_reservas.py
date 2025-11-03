@@ -49,7 +49,7 @@ def fazer_reserva():
     nome = input("Nome do passageiro: ").strip()
     cpf = input("CPF (apenas números): ").strip()
 
-    # validações bem básicas (parece iniciante)
+    # validações bem básicas
     if nome == "" or cpf == "":
         print("Nome e CPF não podem ficar vazios.")
         return
