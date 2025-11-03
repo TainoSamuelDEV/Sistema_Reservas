@@ -54,7 +54,7 @@ def fazer_reserva():
         print("Nome e CPF não podem ficar vazios.")
         return
 
-    # cria reserva simples
+    # cria reserva 
     reserva = {
         "numero": proximo_numero,
         "nome": nome,
